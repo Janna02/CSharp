@@ -8,14 +8,13 @@ Console.WriteLine("Введите количество чисел");
 Console.Write("M = ");
 int[] arr = new int[int.Parse(Console.ReadLine())];
 
-int[] ReadNumbers(int[] array)
+void ReadNumbers(int[] array)
 {
     Console.WriteLine("Введите числа: ");
     for (int i = 0; i < arr.Length; i++)
     {
         arr[i] = int.Parse(Console.ReadLine());
     }
-    return new int[] { };
 }
 
 int CountNumbersMoreThanZero(int[] array)
@@ -39,7 +38,7 @@ void PrintArray(int[] array)
     }
 }
 
-int[] arrayWittNumbers = ReadNumbers(arr);
+ReadNumbers(arr);
 int count = CountNumbersMoreThanZero(arr);
 Console.WriteLine($"Количество чисел больше нуля среди введенных :");
 PrintArray(arr);
