@@ -17,8 +17,8 @@ double b2 = Convert.ToDouble(Console.ReadLine());
 
 double[] FindPointOfIntersection(double kp1, double kp2, double bp1, double bp2)
 {
-    double x = -(bp2 - bp1) / (kp2 - kp1);
-    double y = kp1 * x + bp1;
+    double x = Math.Round((-(bp2 - bp1) / (kp2 - kp1)), 2, MidpointRounding.ToZero);
+    double y = Math.Round((kp1 * x + bp1), 2, MidpointRounding.ToZero);
     return new double[] { x, y };
 }
 
