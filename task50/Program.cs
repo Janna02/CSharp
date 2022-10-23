@@ -67,11 +67,28 @@ void PrintMatrixIndex(int[,] matrix)
 
 }
 
+void PrintMatrix(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        Console.Write("[");
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j],4}");
+            else Console.Write($"{matrix[i, j],4}");
+        }
+        Console.WriteLine("]");
+    }
+
+}
+
 Console.WriteLine("Введите номер строки в которой нужно найти элемент:");
 int numOfrRow = Convert.ToInt32(Console.ReadLine());
 
 Console.WriteLine("Введите номер столбца в котором нужно найти элемент:");
 int numOfColumn = Convert.ToInt32(Console.ReadLine());
+
+PrintMatrix(array2D);
 
 ReturnValueExistPositionOfElem(array2D, numOfrRow, numOfColumn);
 ReturnMessageIfWeDontHavePositon(array2D, numOfrRow, numOfColumn);

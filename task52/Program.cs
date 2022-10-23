@@ -21,23 +21,44 @@ int[,] CreateMatrixRndInt(int rows, int columns, int min, int max)
     return matrix;
 }
 
-void AverageOfNumOfColumn(int[,] matrix)
+int[] SumOfNumOfColumn(int[,] matrix)
 {
-    double avgOfNum = default;
-    Console.Write($"Среднее арифметическое каждого столбца : ");
+    int sumOfNum = default;
+    int[] arrayOfSums = new int[matrix.GetLength(1)];
     for (int j = 0; j < matrix.GetLength(1); j++)
     {
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
-            avgOfNum += matrix[i, j];
+            sumOfNum += matrix[i, j];
         }
-        if (j < matrix.GetLength(1) - 1)
-            Console.Write(Math.Round(avgOfNum / matrix.GetLength(0), 2, MidpointRounding.ToZero) + "; ");
-        else
-            Console.Write(Math.Round(avgOfNum / matrix.GetLength(0), 2, MidpointRounding.ToZero) + ".");
-        avgOfNum = 0;
+        arrayOfSums[j] = sumOfNum;
+        sumOfNum = 0;
     }
+    return arrayOfSums;
+}
 
+double[] AverageOfNumOfColumn(int[] arrOfsum)
+{
+    double[] arrayOfAverageofNum = new double[arrOfsum.Length];
+    for (int i = 0; i < arrOfsum.Length; i++)
+    {
+        double avgRes;
+        avgRes = arrOfsum[i] / (double)(arrOfsum.Length);
+        arrayOfAverageofNum[i] = avgRes;
+    }
+    return arrayOfAverageofNum;
+}
+
+void PrintAverageOfNumOfColumn(double[] arrAvgOfsum)
+{
+    Console.Write($"Среднее арифметическое каждого столбца : ");
+    for (int i = 0; i < arrAvgOfsum.Length; i++)
+    {
+        if (i < arrAvgOfsum.Length - 1)
+            Console.Write(Math.Round(arrAvgOfsum[i], 2, MidpointRounding.ToZero) + "; ");
+        else
+            Console.Write(Math.Round(arrAvgOfsum[i], 2, MidpointRounding.ToZero) + ".");
+    }
 }
 
 void PrintMatrix(int[,] matrix)
@@ -57,4 +78,6 @@ void PrintMatrix(int[,] matrix)
 int[,] array2D = CreateMatrixRndInt(3, 4, 1, 10);
 Console.WriteLine("Массив из целых чисел: ");
 PrintMatrix(array2D);
-AverageOfNumOfColumn(array2D);
+int[] sumOfNumOfColumn = SumOfNumOfColumn(array2D);
+double[] averageOfNumOfColumn = AverageOfNumOfColumn(sumOfNumOfColumn);
+PrintAverageOfNumOfColumn(averageOfNumOfColumn);
