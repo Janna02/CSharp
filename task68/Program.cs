@@ -29,5 +29,5 @@ if (num1 < 0 || num2 < 0)
 else
 {
     int functionOfAckermann = FunctionOfAckermann(num1, num2);
-    Console.Write("Рассчитанное значение = " + functionOfAckermann);
+    Console.Write($"m = {num1}, n = {num2} -> A({num1},{num2}) = " + functionOfAckermann);
 }
